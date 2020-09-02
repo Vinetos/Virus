@@ -20,19 +20,17 @@ public class Launcher {
 
 		int[] d2 = {3 , 4};
 
-		start(Arrays.asList(d2) ,40);
+		start(Arrays.asList(d2) ,10000);
 
 
 	}
 
 	public static void start(List<int[]> patients0, int n){
-
 		if(!(patients0.size() > 0))return;
 				//setup all citizens and patients
 		for(int i = 0 ; i < n ; i++) {
 
 			for(int o = 0 ; o < n ; o++) {
-
 				for(int[] loc : patients0) {
 					
 					if(!(loc[0] > n || loc[1] > n)) {
@@ -46,7 +44,7 @@ public class Launcher {
 
 							Citizen guy = new Citizen(i, o);
 							citizens.add(guy);
-
+							
 						}
 					}
 				}
@@ -60,11 +58,15 @@ public class Launcher {
 		Timer timer = new Timer();
 
 		timer.schedule(new TimerTask() {
+			
+			private int tours = 0;
+			
 			@Override
 			public void run() {
-
+				
+				if(tours != stage)return;
 				step();
-
+				tours++;
 				System.out.println(getInformationsMessage());
 				System.out.println("-------------------------------");
 
@@ -75,14 +77,14 @@ public class Launcher {
 				}
 
 			}
-		}, 0 , 500);
+		}, 0 , 1);
 
 
 	}
 
 	public static void step() {
 			//thread step function
-		stage++;
+		
 		List<Infected> ptoRemove = new ArrayList<>();
 		List<Infected> ptoAdd = new ArrayList<>();
 
@@ -122,6 +124,7 @@ public class Launcher {
 		
 		canInfect.addAll(ptoAdd);
 		canInfect.removeAll(ptoRemove);
+		stage++;
 	}
 
 
