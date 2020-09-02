@@ -133,5 +133,60 @@ public class Launcher {
 	public static String getInformationsMessage() {
 		return "Jour " + stage + "\n" + "Il reste " + citizens.size() + " habitants et il y'a " + getInfectionSize() + " infectés";
 	} 
+	
+
+}
+
+
+class Citizen{
+	
+
+	private int x;
+	
+	private int y;
+	
+
+	
+	public Citizen(int x , int y) {
+		this.x = x;
+		this.y = y;
+	
+	}
+	
+	
+
+	public int getY() {
+		return y;
+	}
+
+
+	public int getX() {
+		return x;
+	}
+
+	
+}
+
+class Infected {
+	
+	private int x;
+	private int y;
+	
+	public Infected(int x, int y) {
+		this.x = x;
+		this.y = y;
+		
+	}
+
+	public int getX() {
+		return x;
+	}
+
+
+	public int getY() {
+		return y;
+	}
+
+
 
 }
